@@ -16,6 +16,14 @@
     "interval": 600000,
     "title": "最新分享"
   },
+  "techcrunch": {
+    "name": "TechCrunch",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://techcrunch.com",
+    "color": "green",
+    "interval": 600000
+  },
   "hackernews": {
     "name": "Hacker News",
     "type": "hottest",
@@ -598,13 +606,5 @@
     "color": "green",
     "interval": 1800000,
     "title": "热播榜"
-  },
-  "techcrunch": {
-    "name": "TechCrunch",
-    "type": "realtime",
-    "column": "tech",
-    "home": "https://techcrunch.com",
-    "color": "green",
-    "interval": 600000
   }
 }

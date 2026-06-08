@@ -24,6 +24,13 @@ export const originSources = {
       },
     },
   },
+  "techcrunch": {
+    name: "TechCrunch",
+    color: "green",
+    home: "https://techcrunch.com",
+    column: "tech",
+    type: "realtime",
+  },
   "hackernews": {
     name: "Hacker News",
     color: "orange",
@@ -509,13 +516,6 @@ export const originSources = {
         home: "https://www.iqiyi.com",
       },
     },
-  },
-  "techcrunch": {
-    name: "TechCrunch",
-    color: "green",
-    home: "https://techcrunch.com",
-    column: "tech",
-    type: "realtime",
   },
 } as const satisfies Record<string, OriginSource>
 
