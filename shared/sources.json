@@ -24,6 +24,14 @@
     "color": "green",
     "interval": 600000
   },
+  "marktechpost": {
+    "name": "MarkTechPost",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://www.marktechpost.com",
+    "color": "gray",
+    "interval": 600000
+  },
   "hackernews": {
     "name": "Hacker News",
     "type": "hottest",

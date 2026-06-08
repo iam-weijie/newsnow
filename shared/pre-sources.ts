@@ -31,6 +31,13 @@ export const originSources = {
     column: "tech",
     type: "realtime",
   },
+  "marktechpost": {
+    name: "MarkTechPost",
+    color: "gray",
+    home: "https://www.marktechpost.com",
+    column: "tech",
+    type: "realtime",
+  },
   "hackernews": {
     name: "Hacker News",
     color: "orange",
