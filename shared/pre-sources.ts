@@ -60,7 +60,7 @@ export const originSources = {
   "morningbrew": {
     name: "Morning Brew",
     color: "blue",
-    home: "https://www.morningbrew.com",
+    home: "https://www.morningbrew.com/r/?kid=57466605",
     column: "world",
     sub: {
       "trending-today": {
