@@ -72,7 +72,7 @@ export const originSources = {
   "techbrew": {
     name: "Tech Brew",
     color: "red",
-    home: "https://www.techbrew.com",
+    home: "https://www.techbrew.com/r/?kid=57466605",
     column: "tech",
     type: "realtime",
   },
