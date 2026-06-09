@@ -32,6 +32,25 @@
     "color": "gray",
     "interval": 600000
   },
+  "alphasignal": {
+    "redirect": "alphasignal-hottest-of-all-time",
+    "name": "AlphaSignal",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://alphasignal.ai",
+    "color": "gray",
+    "interval": 600000,
+    "title": "Hottest of All Time"
+  },
+  "alphasignal-hottest-of-all-time": {
+    "name": "AlphaSignal",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://alphasignal.ai",
+    "color": "gray",
+    "interval": 600000,
+    "title": "Hottest of All Time"
+  },
   "hackernews": {
     "name": "Hacker News",
     "type": "hottest",

@@ -38,6 +38,19 @@ export const originSources = {
     column: "tech",
     type: "realtime",
   },
+  "alphasignal": {
+    name: "AlphaSignal",
+    color: "gray",
+    home: "https://alphasignal.ai",
+    column: "tech",
+    type: "hottest",
+    sub: {
+      "hottest-of-all-time": {
+        title: "Hottest of All Time",
+        type: "hottest",
+      },
+    },
+  },
   "hackernews": {
     name: "Hacker News",
     color: "orange",
