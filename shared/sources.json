@@ -51,6 +51,78 @@
     "interval": 600000,
     "title": "Hottest of All Time"
   },
+  "reddit-apple": {
+    "name": "r/apple",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/apple",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-artificial": {
+    "name": "r/artificial",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/artificial",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-artificialintelligence": {
+    "name": "r/ArtificialIntelligence",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/ArtificialIntelligence",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-careeradvice": {
+    "name": "r/careeradvice",
+    "type": "hottest",
+    "column": "world",
+    "home": "https://reddit.com/r/careeradvice",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-computerscience": {
+    "name": "r/computerscience",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/computerscience",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-programmerhumor": {
+    "name": "r/programmerhumor",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/programmerhumor",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-wallstreetbets": {
+    "name": "r/wallstreetbets",
+    "type": "hottest",
+    "column": "finance",
+    "home": "https://reddit.com/r/wallstreetbets",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-investing": {
+    "name": "r/investing",
+    "type": "hottest",
+    "column": "finance",
+    "home": "https://reddit.com/r/investing",
+    "color": "orange",
+    "interval": 600000
+  },
+  "reddit-technology": {
+    "name": "r/technology",
+    "type": "hottest",
+    "column": "tech",
+    "home": "https://reddit.com/r/technology",
+    "color": "orange",
+    "interval": 600000
+  },
   "hackernews": {
     "name": "Hacker News",
     "type": "hottest",
