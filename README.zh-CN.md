@@ -1,6 +1,6 @@
 ![](/public/og-image.png)
 
-[English](./README.md) | 简体中文 | [日本語](README.ja-JP.md)
+[English](./README.md) | 简体中文
 
 ***优雅地阅读实时热门新闻***
 
