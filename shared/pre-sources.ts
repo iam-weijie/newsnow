@@ -51,6 +51,51 @@ export const originSources = {
       },
     },
   },
+  "hackernews": {
+    name: "Hacker News",
+    color: "orange",
+    column: "tech",
+    type: "hottest",
+    home: "https://news.ycombinator.com/",
+  },
+  "producthunt": {
+    name: "Product Hunt",
+    color: "red",
+    column: "tech",
+    type: "hottest",
+    home: "https://www.producthunt.com/",
+  },
+  "github": {
+    name: "Github",
+    color: "gray",
+    home: "https://github.com/",
+    column: "tech",
+    sub: {
+      "trending-today": {
+        title: "Today",
+        type: "hottest",
+      },
+    },
+  },
+  "morningbrew": {
+    name: "Morning Brew",
+    color: "blue",
+    home: "https://www.morningbrew.com/r/?kid=57466605",
+    column: "world",
+    sub: {
+      "trending-today": {
+        title: "Newsletter",
+        type: "realtime",
+      },
+    },
+  },
+  "techbrew": {
+    name: "Tech Brew",
+    color: "red",
+    home: "https://www.techbrew.com/r/?kid=57466605",
+    column: "tech",
+    type: "realtime",
+  },
   "reddit-apple": {
     name: "r/apple",
     color: "orange",
@@ -113,51 +158,6 @@ export const originSources = {
     home: "https://reddit.com/r/technology",
     column: "tech",
     type: "hottest",
-  },
-  "hackernews": {
-    name: "Hacker News",
-    color: "orange",
-    column: "tech",
-    type: "hottest",
-    home: "https://news.ycombinator.com/",
-  },
-  "producthunt": {
-    name: "Product Hunt",
-    color: "red",
-    column: "tech",
-    type: "hottest",
-    home: "https://www.producthunt.com/",
-  },
-  "github": {
-    name: "Github",
-    color: "gray",
-    home: "https://github.com/",
-    column: "tech",
-    sub: {
-      "trending-today": {
-        title: "Today",
-        type: "hottest",
-      },
-    },
-  },
-  "morningbrew": {
-    name: "Morning Brew",
-    color: "blue",
-    home: "https://www.morningbrew.com/r/?kid=57466605",
-    column: "world",
-    sub: {
-      "trending-today": {
-        title: "Newsletter",
-        type: "realtime",
-      },
-    },
-  },
-  "techbrew": {
-    name: "Tech Brew",
-    color: "red",
-    home: "https://www.techbrew.com/r/?kid=57466605",
-    column: "tech",
-    type: "realtime",
   },
   "steam": {
     name: "Steam",
