@@ -96,6 +96,13 @@ export const originSources = {
     column: "tech",
     type: "realtime",
   },
+  "itbrew": {
+    name: "IT Brew",
+    color: "indigo",
+    home: "https://www.itbrew.com/r/?kid=57466605",
+    column: "tech",
+    type: "realtime",
+  },
   "reddit-apple": {
     name: "r/apple",
     color: "orange",

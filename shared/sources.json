@@ -113,6 +113,14 @@
     "color": "red",
     "interval": 600000
   },
+  "itbrew": {
+    "name": "IT Brew",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://www.itbrew.com/r/?kid=57466605",
+    "color": "indigo",
+    "interval": 600000
+  },
   "reddit-apple": {
     "name": "r/apple",
     "type": "hottest",
