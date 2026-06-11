@@ -103,6 +103,13 @@ export const originSources = {
     column: "tech",
     type: "realtime",
   },
+  "brewmarkets": {
+    name: "Brew Markets",
+    color: "emerald",
+    home: "https://www.brewmarkets.com/r/?kid=57466605",
+    column: "finance",
+    type: "realtime",
+  },
   "reddit-apple": {
     name: "r/apple",
     color: "orange",

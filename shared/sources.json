@@ -121,6 +121,14 @@
     "color": "indigo",
     "interval": 600000
   },
+  "brewmarkets": {
+    "name": "Brew Markets",
+    "type": "realtime",
+    "column": "finance",
+    "home": "https://www.brewmarkets.com/r/?kid=57466605",
+    "color": "emerald",
+    "interval": 600000
+  },
   "reddit-apple": {
     "name": "r/apple",
     "type": "hottest",

@@ -33,10 +33,7 @@ async function main() {
           return
         }
         if (!source.home) return
-        const host = source.home
-          .replace(/^https?:\/\//, "")
-          .replace(/\/$/, "")
-          .split(/[?#]/)[0]
+        const host = new URL(source.home).hostname
         await downloadImage(`https://icons.duckduckgo.com/ip3/${host}.ico`, icon, id)
       } catch (e) {
         consola.error(id, "\n", e)

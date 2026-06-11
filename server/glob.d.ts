@@ -6,6 +6,7 @@ declare module 'glob:./sources/{*.ts,**/index.ts}' {
   export const alphasignal: typeof import('./sources/alphasignal')
   export const baidu: typeof import('./sources/baidu')
   export const bilibili: typeof import('./sources/bilibili')
+  export const brewmarkets: typeof import('./sources/brewmarkets')
   export const cankaoxiaoxi: typeof import('./sources/cankaoxiaoxi')
   export const chongbuluo: typeof import('./sources/chongbuluo')
   export const cls: typeof import('./sources/cls/index')
