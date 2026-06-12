@@ -4,6 +4,7 @@ import { useToast } from "./useToast"
 
 export function usePWA() {
   const toaster = useToast()
+  const t = useT()
   const { updateServiceWorker, needRefresh: [needRefresh] } = useRegisterSW()
 
   useMount(async () => {
@@ -13,9 +14,9 @@ export function usePWA() {
     await delay(1000)
     if (localStorage.getItem("updated")) {
       localStorage.removeItem("updated")
-      toaster("更新成功，赶快体验吧", {
+      toaster(t("pwaUpdateSuccess"), {
         action: {
-          label: "查看更新",
+          label: t("pwaViewRelease"),
           onClick: () => {
             window.open(`${Homepage}/releases/tag/v${Version}`)
           },
@@ -29,9 +30,9 @@ export function usePWA() {
       const resp = await myFetch("/latest")
 
       if (resp.v && resp.v !== Version) {
-        toaster("有更新，5 秒后自动更新", {
+        toaster(t("pwaUpdateSoon"), {
           action: {
-            label: "立刻更新",
+            label: t("pwaUpdateNow"),
             onClick: update,
           },
           onDismiss: update,

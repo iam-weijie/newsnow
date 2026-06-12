@@ -41,6 +41,7 @@ export function useSync() {
   const [primitiveMetadata, setPrimitiveMetadata] = useAtom(primitiveMetadataAtom)
   const { logout, login } = useLogin()
   const toaster = useToast()
+  const t = useT()
 
   useDebounce(async () => {
     const fn = async () => {
@@ -48,10 +49,10 @@ export function useSync() {
         await uploadMetadata(primitiveMetadata)
       } catch (e: any) {
         if (e.statusCode !== 506) {
-          toaster("身份校验失败，无法同步，请重新登录", {
+          toaster(t("syncAuthFailed"), {
             type: "error",
             action: {
-              label: "登录",
+              label: t("login"),
               onClick: login,
             },
           })
@@ -63,7 +64,7 @@ export function useSync() {
     if (primitiveMetadata.action === "manual") {
       fn()
     }
-  }, 10000, [primitiveMetadata])
+  }, 10000, [primitiveMetadata, t, login, logout, toaster])
   useMount(() => {
     const fn = async () => {
       try {
@@ -73,10 +74,10 @@ export function useSync() {
         }
       } catch (e: any) {
         if (e.statusCode !== 506) {
-          toaster("身份校验失败，无法同步，请重新登录", {
+          toaster(t("syncAuthFailed"), {
             type: "error",
             action: {
-              label: "登录",
+              label: t("login"),
               onClick: login,
             },
           })

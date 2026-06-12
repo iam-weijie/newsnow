@@ -45,6 +45,19 @@ function Refresh() {
   )
 }
 
+function LocaleToggle() {
+  const { locale, toggleLocale } = useLocale()
+  const t = useT()
+  return (
+    <button
+      type="button"
+      title={locale === "zh-CN" ? t("switchToEnglish") : t("switchToChinese")}
+      className="i-ph:translate-duotone btn"
+      onClick={toggleLocale}
+    />
+  )
+}
+
 export function Header() {
   return (
     <>
@@ -71,6 +84,7 @@ export function Header() {
       <span className="justify-self-end flex gap-2 items-center text-xl text-primary-600 dark:text-primary">
         <GoTop />
         <Refresh />
+        <LocaleToggle />
         <Github />
         <Menu />
       </span>

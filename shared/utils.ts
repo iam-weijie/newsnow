@@ -1,12 +1,23 @@
-export function relativeTime(timestamp: string | number) {
+import type { Locale } from "./metadata"
+
+export function relativeTime(timestamp: string | number, locale: Locale = "zh-CN") {
   if (!timestamp) return undefined
   const date = new Date(timestamp)
-  if (Number.isNaN(date.getDay())) return undefined
+  if (Number.isNaN(date.getTime())) return undefined
 
   const now = new Date()
   const diffInSeconds = (now.getTime() - date.getTime()) / 1000
   const diffInMinutes = diffInSeconds / 60
   const diffInHours = diffInMinutes / 60
+
+  if (locale === "en") {
+    if (diffInSeconds < 60) return "just now"
+    if (diffInMinutes < 60) return `${Math.floor(diffInMinutes)} min ago`
+    if (diffInHours < 24) return `${Math.floor(diffInHours)} hr ago`
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return `${month}/${day}`
+  }
 
   if (diffInSeconds < 60) {
     return "刚刚"

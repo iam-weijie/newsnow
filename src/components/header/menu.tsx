@@ -14,6 +14,7 @@ import { motion } from "framer-motion"
 
 export function Menu() {
   const { loggedIn, login, logout, userInfo, enableLogin } = useLogin()
+  const t = useT()
   const [shown, show] = useState(false)
   return (
     <span className="relative" onMouseEnter={() => show(true)} onMouseLeave={() => show(false)}>
@@ -55,13 +56,13 @@ export function Menu() {
                 ? (
                     <li onClick={logout}>
                       <span className="i-ph:sign-out-duotone inline-block" />
-                      <span>退出登录</span>
+                      <span>{t("logout")}</span>
                     </li>
                   )
                 : (
                     <li onClick={login}>
                       <span className="i-ph:sign-in-duotone inline-block" />
-                      <span>Github 账号登录</span>
+                      <span>{t("loginGithub")}</span>
                     </li>
                   ))}
               {/* <ThemeToggle /> */}

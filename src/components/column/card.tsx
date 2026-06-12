@@ -171,10 +171,11 @@ function NewsCard({ id, setHandleRef }: NewsCardProps) {
 }
 
 function UpdatedTime({ isError, updatedTime }: { updatedTime: any, isError: boolean }) {
-  const relativeTime = useRelativeTime(updatedTime ?? "")
-  if (relativeTime) return `${relativeTime}更新`
-  if (isError) return "获取失败"
-  return "加载中..."
+  const relative = useRelativeTime(updatedTime ?? "")
+  const t = useT()
+  if (relative) return t("updatedAt", relative)
+  if (isError) return t("fetchFailed")
+  return t("loading")
 }
 
 function DiffNumber({ diff }: { diff: number }) {

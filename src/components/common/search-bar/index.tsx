@@ -16,7 +16,7 @@ interface SourceItemProps {
   pinyin: string
 }
 
-function groupByColumn(items: SourceItemProps[]) {
+function groupByColumn(items: SourceItemProps[], techLabel: string, uncategorizedLabel: string) {
   return items.reduce((acc, item) => {
     const k = acc.find(i => i.column === item.column)
     if (k) k.sources = [...k.sources, item]
@@ -26,11 +26,11 @@ function groupByColumn(items: SourceItemProps[]) {
     column: string
     sources: SourceItemProps[]
   }[]).sort((m, n) => {
-    if (m.column === "科技") return -1
-    if (n.column === "科技") return 1
+    if (m.column === techLabel) return -1
+    if (n.column === techLabel) return 1
 
-    if (m.column === "未分类") return 1
-    if (n.column === "未分类") return -1
+    if (m.column === uncategorizedLabel) return 1
+    if (n.column === uncategorizedLabel) return -1
 
     return m.column < n.column ? -1 : 1
   })
@@ -38,6 +38,10 @@ function groupByColumn(items: SourceItemProps[]) {
 
 export function SearchBar() {
   const { opened, toggle } = useSearchBar()
+  const { locale } = useLocale()
+  const t = useT()
+  const techLabel = getColumnName("tech", locale)
+  const uncategorizedLabel = t("uncategorized")
   const sourceItems = useMemo(
     () =>
       groupByColumn(typeSafeObjectEntries(sources)
@@ -45,11 +49,11 @@ export function SearchBar() {
         .map(([k, source]) => ({
           id: k,
           title: source.title,
-          column: source.column ? columns[source.column].zh : "未分类",
+          column: source.column ? getColumnName(source.column, locale) : uncategorizedLabel,
           name: source.name,
           pinyin: pinyin?.[k as keyof typeof pinyin] ?? "",
-        })))
-    , [],
+        })), techLabel, uncategorizedLabel)
+    , [locale, techLabel, uncategorizedLabel],
   )
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -83,12 +87,12 @@ export function SearchBar() {
       <Command.Input
         ref={inputRef}
         autoFocus
-        placeholder="搜索你想要的"
+        placeholder={t("searchPlaceholder")}
       />
       <div className="md:flex pt-2">
         <OverlayScrollbar defer className="overflow-y-auto md:min-w-275px">
           <Command.List>
-            <Command.Empty> 没有找到，可以前往 Github 提 issue </Command.Empty>
+            <Command.Empty>{t("searchEmpty")}</Command.Empty>
             {
               sourceItems.map(({ column, sources }) => (
                 <Command.Group heading={column} key={column}>

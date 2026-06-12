@@ -6,11 +6,12 @@ import { currentColumnIDAtom } from "~/atoms"
 
 export function Column({ id }: { id: FixedColumnID }) {
   const [currentColumnID, setCurrentColumnID] = useAtom(currentColumnIDAtom)
+  const { locale } = useLocale()
   useEffect(() => {
     setCurrentColumnID(id)
   }, [id, setCurrentColumnID])
 
-  useTitle(`NewsNow | ${metadata[id].name}`)
+  useTitle(`NewsNow | ${getColumnName(id, locale)}`)
 
   return (
     <>
