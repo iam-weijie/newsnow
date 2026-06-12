@@ -2,7 +2,7 @@ import { useCallback } from "react"
 import { useMount, useUpdateEffect } from "react-use"
 import type { Locale } from "@shared/metadata"
 
-export const localeAtom = atomWithStorage<Locale>("locale", "zh-CN")
+export const localeAtom = atomWithStorage<Locale>("locale", "en")
 
 export function useLocale() {
   const [locale, setLocale] = useAtom(localeAtom)
