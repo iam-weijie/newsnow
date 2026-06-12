@@ -194,7 +194,7 @@ export const originSources = {
   "steam": {
     name: "Steam",
     column: "world",
-    title: "在线人数",
+    title: "Online Players",
     color: "blue",
     type: "hottest",
     home: "https://store.steampowered.com",
