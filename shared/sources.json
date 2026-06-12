@@ -51,6 +51,34 @@
     "interval": 600000,
     "title": "Hottest of All Time"
   },
+  "anthropic": {
+    "redirect": "anthropic-news",
+    "name": "Anthropic",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://www.anthropic.com/news",
+    "color": "orange",
+    "interval": 600000,
+    "title": "News"
+  },
+  "anthropic-news": {
+    "name": "Anthropic",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://www.anthropic.com/news",
+    "color": "orange",
+    "interval": 600000,
+    "title": "News"
+  },
+  "anthropic-research": {
+    "name": "Anthropic",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://www.anthropic.com/research",
+    "color": "orange",
+    "interval": 600000,
+    "title": "Research"
+  },
   "hackernews": {
     "name": "Hacker News",
     "type": "hottest",

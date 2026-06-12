@@ -51,6 +51,24 @@ export const originSources = {
       },
     },
   },
+  "anthropic": {
+    name: "Anthropic",
+    color: "orange",
+    home: "https://www.anthropic.com",
+    column: "tech",
+    sub: {
+      news: {
+        title: "News",
+        type: "realtime",
+        home: "https://www.anthropic.com/news",
+      },
+      research: {
+        title: "Research",
+        type: "realtime",
+        home: "https://www.anthropic.com/research",
+      },
+    },
+  },
   "hackernews": {
     name: "Hacker News",
     color: "orange",
