@@ -68,12 +68,24 @@ ENABLE_CACHE=true
 ```
 
 ### 数据库支持
-本项目主推 Cloudflare Pages 以及 Docker 部署， Vercel 需要你自行搞定数据库，其他支持的数据库可以查看 https://db0.unjs.io/connectors 。
+本项目主推 Cloudflare Pages 以及 Docker 部署。其他支持的数据库可以查看 https://db0.unjs.io/connectors 。
+
+**Cloudflare Pages：**
 
 1. 在 Cloudflare Worker 控制面板创建 D1 数据库
 2. 在 `wrangler.toml` 中配置 `database_id` 和 `database_name`
 3. 若无 `wrangler.toml` ，可将 `example.wrangler.toml` 重命名并修改配置
 4. 重新部署生效
+
+**Vercel：**
+
+1. 将项目导入 Vercel
+2. 在 [Vercel Marketplace](https://vercel.com/marketplace) 添加 Postgres 集成（如 Neon），会自动注入 `POSTGRES_URL`
+3. 在 Vercel 项目设置中配置上述 GitHub OAuth 和 JWT 环境变量
+4. 将 GitHub OAuth 回调 URL 设置为 `https://your-domain.vercel.app/api/oauth/github`
+5. 部署即可 — 首次请求时 `INIT_TABLE=true` 会自动建表
+
+本地连接远程 Postgres 时，将 `POSTGRES_URL` 写入 `.env.server`（可通过 `vercel env pull` 获取）。
 
 ### Docker 部署
 对于 Docker 部署，只需要项目根目录 `docker-compose.yaml` 文件，同一目录下执行

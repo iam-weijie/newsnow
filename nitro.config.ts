@@ -33,14 +33,15 @@ const nitroOption: Parameters<typeof viteNitro>[0] = {
 }
 
 if (process.env.VERCEL) {
-  nitroOption.preset = "vercel-edge"
-  // You can use other online database, do it yourself. For more info: https://db0.unjs.io/connectors
-  nitroOption.database = undefined
-  // nitroOption.vercel = {
-  //   config: {
-  //     cache: []
-  //   },
-  // }
+  nitroOption.preset = "vercel"
+  nitroOption.database = {
+    default: {
+      connector: "postgresql",
+      options: {
+        url: process.env.POSTGRES_URL,
+      },
+    },
+  }
 } else if (process.env.CF_PAGES) {
   nitroOption.preset = "cloudflare-pages"
   nitroOption.unenv = {

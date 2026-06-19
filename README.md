@@ -75,12 +75,22 @@ ENABLE_CACHE=true
 ### Database Support
 
 Supported database connectors: https://db0.unjs.io/connectors
-**Cloudflare D1 Database** is recommended.
+**Cloudflare D1 Database** is recommended for Cloudflare Pages.
 
 1. Create D1 database in Cloudflare Worker dashboard
 2. Configure database_id and database_name in wrangler.toml
 3. If wrangler.toml doesn't exist, rename example.wrangler.toml and modify configurations
 4. Changes will take effect on next deployment
+
+### Vercel Deployment
+
+1. Import the project to Vercel
+2. Add a Postgres integration from the [Vercel Marketplace](https://vercel.com/marketplace) (e.g. Neon) — this injects `POSTGRES_URL` automatically
+3. Set the GitHub OAuth and JWT environment variables listed above in the Vercel project settings
+4. Set the GitHub OAuth callback URL to `https://your-domain.vercel.app/api/oauth/github`
+5. Deploy — tables are created on first request when `INIT_TABLE=true`
+
+For local development with a remote Postgres database, copy `POSTGRES_URL` into `.env.server` (e.g. via `vercel env pull`).
 
 ### Docker Deployment
 
