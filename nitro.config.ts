@@ -38,7 +38,7 @@ if (process.env.VERCEL) {
     default: {
       connector: "postgresql",
       options: {
-        url: process.env.POSTGRES_URL,
+        url: process.env.POSTGRES_URL || process.env.DATABASE_URL,
       },
     },
   }

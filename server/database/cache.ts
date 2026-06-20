@@ -13,10 +13,13 @@ export class Cache {
     await this.db.prepare(`
       CREATE TABLE IF NOT EXISTS cache (
         id TEXT PRIMARY KEY,
-        updated INTEGER,
+        updated BIGINT,
         data TEXT
       );
     `).run()
+    if (process.env.VERCEL) {
+      await this.db.prepare(`ALTER TABLE cache ALTER COLUMN updated TYPE BIGINT`).run().catch(() => {})
+    }
     logger.success(`init cache table`)
   }
 

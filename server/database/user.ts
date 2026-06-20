@@ -1,3 +1,4 @@
+import process from "node:process"
 import type { Database } from "db0"
 import type { UserInfo } from "#/types"
 
@@ -21,10 +22,14 @@ export class UserTable {
         email TEXT,
         data TEXT,
         type TEXT,
-        created INTEGER,
-        updated INTEGER
+        created BIGINT,
+        updated BIGINT
       );
     `).run()
+    if (process.env.VERCEL) {
+      await this.db.prepare(`ALTER TABLE ${USER_TABLE} ALTER COLUMN created TYPE BIGINT`).run().catch(() => {})
+      await this.db.prepare(`ALTER TABLE ${USER_TABLE} ALTER COLUMN updated TYPE BIGINT`).run().catch(() => {})
+    }
     await this.db.prepare(`
       CREATE INDEX IF NOT EXISTS idx_user_id ON ${USER_TABLE}(id);
     `).run()
