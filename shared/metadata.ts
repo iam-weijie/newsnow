@@ -35,7 +35,7 @@ export const columns = {
   },
 } as const
 
-export function getColumnName(id: ColumnID, locale: Locale = "zh-CN") {
+export function getColumnName(id: ColumnID, locale: Locale = "en") {
   return locale === "en" ? columns[id].en : columns[id].zh
 }
 
@@ -46,22 +46,22 @@ export const metadata: Metadata = typeSafeObjectFromEntries(typeSafeObjectEntrie
   switch (k) {
     case "focus":
       return [k, {
-        name: v.zh,
+        name: v.en,
         sources: [] as SourceID[],
       }]
     case "hottest":
       return [k, {
-        name: v.zh,
+        name: v.en,
         sources: typeSafeObjectEntries(sources).filter(([, v]) => v.type === "hottest" && !v.redirect).map(([k]) => k),
       }]
     case "realtime":
       return [k, {
-        name: v.zh,
+        name: v.en,
         sources: typeSafeObjectEntries(sources).filter(([, v]) => v.type === "realtime" && !v.redirect).map(([k]) => k),
       }]
     default:
       return [k, {
-        name: v.zh,
+        name: v.en,
         sources: typeSafeObjectEntries(sources).filter(([, v]) => v.column === k && !v.redirect).map(([k]) => k),
       }]
   }

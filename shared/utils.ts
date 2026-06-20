@@ -1,6 +1,6 @@
 import type { Locale } from "./metadata"
 
-export function relativeTime(timestamp: string | number, locale: Locale = "zh-CN") {
+export function relativeTime(timestamp: string | number, locale: Locale = "en") {
   if (!timestamp) return undefined
   const date = new Date(timestamp)
   if (Number.isNaN(date.getTime())) return undefined
