@@ -1,26 +1,16 @@
-import { useCallback, useMemo, useRef } from "react"
-import { useMount, useWindowSize } from "react-use"
+import { useCallback, useRef } from "react"
+import { useMount } from "react-use"
 import { useAutoAnimate } from "@formkit/auto-animate/react"
 import type { ToastItem } from "~/atoms/types"
 import { Timer } from "~/utils"
 
-const WIDTH = 320
 export function Toast() {
-  const { width } = useWindowSize()
-  const center = useMemo(() => {
-    const t = (width - WIDTH) / 2
-    return t > width * 0.9 ? width * 0.9 : t
-  }, [width])
   const toastItems = useAtomValue(toastAtom)
   const [parent] = useAutoAnimate({ duration: 200 })
   return (
     <ol
       ref={parent}
-      style={{
-        width: WIDTH,
-        left: center,
-      }}
-      className="absolute top-4 z-99 flex flex-col gap-2"
+      className="absolute top-4 left-1/2 z-99 flex flex-col gap-2 w-max min-w-80 max-w-[90vw] -translate-x-1/2"
     >
       {
         toastItems.map(k => <Item key={k.id} info={k} />)
@@ -73,22 +63,22 @@ function Item({ info }: { info: ToastItem }) {
     >
       <div className={$(
         `bg-${color}-500 dark:bg-${color} bg-op-40! p2 backdrop-blur-5 rounded-lg w-full`,
-        "flex items-center gap-2",
+        "flex items-center gap-2 flex-nowrap",
       )}
       >
         {
           hoverd
-            ? <button type="button" className={`i-ph:x-circle color-${color}-500 i-ph:info`} onClick={() => hidden(false)} />
-            : <span className={`i-ph:info color-${color}-500 `} />
+            ? <button type="button" className={`i-ph:x-circle color-${color}-500 i-ph:info shrink-0`} onClick={() => hidden(false)} />
+            : <span className={`i-ph:info color-${color}-500 shrink-0`} />
         }
-        <div className="flex justify-between w-full">
-          <span className="op-90 dark:op-100">
+        <div className="flex justify-between w-full items-center gap-2 flex-nowrap">
+          <span className="op-90 dark:op-100 whitespace-nowrap">
             {info.msg}
           </span>
           {info.action && (
             <button
               type="button"
-              className={`text-sm color-${color}-500 bg-base op-80 bg-op-50! px-1 rounded min-w-10 hover:bg-op-70!`}
+              className={`text-sm color-${color}-500 bg-base op-80 bg-op-50! px-2 rounded shrink-0 whitespace-nowrap hover:bg-op-70!`}
               onClick={info.action.onClick}
             >
               {info.action.label}
