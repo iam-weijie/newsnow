@@ -76,6 +76,28 @@ export const originSources = {
     type: "hottest",
     home: "https://news.ycombinator.com/",
   },
+  "arxiv": {
+    name: "arXiv",
+    color: "red",
+    home: "https://arxiv.org",
+    column: "tech",
+    type: "realtime",
+    interval: Time.Slow,
+    sub: {
+      "cs-ai": {
+        title: "Artificial Intelligence",
+      },
+      "cs-lg": {
+        title: "Machine Learning",
+      },
+      "cs-cv": {
+        title: "Computer Vision",
+      },
+      "cs-cl": {
+        title: "Computation and Language",
+      },
+    },
+  },
   "producthunt": {
     name: "Product Hunt",
     color: "red",

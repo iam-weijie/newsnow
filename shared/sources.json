@@ -87,6 +87,52 @@
     "color": "orange",
     "interval": 600000
   },
+  "arxiv": {
+    "redirect": "arxiv-cs-ai",
+    "name": "arXiv",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://arxiv.org",
+    "color": "red",
+    "interval": 3600000,
+    "title": "Artificial Intelligence"
+  },
+  "arxiv-cs-ai": {
+    "name": "arXiv",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://arxiv.org",
+    "color": "red",
+    "interval": 3600000,
+    "title": "Artificial Intelligence"
+  },
+  "arxiv-cs-lg": {
+    "name": "arXiv",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://arxiv.org",
+    "color": "red",
+    "interval": 3600000,
+    "title": "Machine Learning"
+  },
+  "arxiv-cs-cv": {
+    "name": "arXiv",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://arxiv.org",
+    "color": "red",
+    "interval": 3600000,
+    "title": "Computer Vision"
+  },
+  "arxiv-cs-cl": {
+    "name": "arXiv",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://arxiv.org",
+    "color": "red",
+    "interval": 3600000,
+    "title": "Computation and Language"
+  },
   "producthunt": {
     "name": "Product Hunt",
     "type": "hottest",
