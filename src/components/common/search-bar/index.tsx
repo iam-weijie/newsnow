@@ -2,6 +2,7 @@ import { Command } from "cmdk"
 import { useMount } from "react-use"
 import type { SourceID } from "@shared/types"
 import { isSourceVisibleInLocale } from "@shared/source-locale"
+import { getSourceTitle } from "@shared/utils"
 import { useMemo, useRef, useState } from "react"
 import pinyin from "@shared/pinyin.json"
 import { OverlayScrollbar } from "../overlay-scrollbar"
@@ -49,7 +50,7 @@ export function SearchBar() {
         .filter(([id, source]) => !source.redirect && isSourceVisibleInLocale(id, locale))
         .map(([id, source]): SourceItemProps => ({
           id,
-          title: source.title,
+          title: getSourceTitle(source, locale),
           column: source.column ? getColumnName(source.column, locale) : uncategorizedLabel,
           name: source.name,
           pinyin: pinyin?.[id as keyof typeof pinyin] ?? "",

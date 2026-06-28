@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from "react"
+import { getSourceTitle } from "@shared/utils"
 import type { SourceID } from "@shared/types"
 import type { BaseEventPayload, ElementDragType } from "@atlaskit/pragmatic-drag-and-drop/dist/types/internal-types"
 import { extractClosestEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge"
@@ -139,6 +140,8 @@ function DndWrapper({ items, setItems, isSingleColumn, children }: PropsWithChil
 
 function CardOverlay({ id }: { id: SourceID }) {
   const t = useT()
+  const { locale } = useLocale()
+  const sourceTitle = getSourceTitle(sources[id], locale)
   return (
     <div className={$(
       "flex flex-col p-4 backdrop-blur-5",
@@ -159,7 +162,7 @@ function CardOverlay({ id }: { id: SourceID }) {
               <span className="text-xl font-bold">
                 {sources[id].name}
               </span>
-              {sources[id]?.title && <span className={$("text-sm", `color-${sources[id].color} bg-base op-80 bg-op-50! px-1 rounded`)}>{sources[id].title}</span>}
+              {sourceTitle && <span className={$("text-sm", `color-${sources[id].color} bg-base op-80 bg-op-50! px-1 rounded`)}>{sourceTitle}</span>}
             </span>
             <span className="text-xs op-70">{t("dragging")}</span>
           </span>

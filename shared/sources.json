@@ -272,7 +272,8 @@
     "home": "https://mktnews.net",
     "color": "indigo",
     "interval": 120000,
-    "title": "快讯"
+    "title": "快讯",
+    "titleEn": "Flash"
   },
   "mktnews-flash": {
     "name": "MKTNews",
@@ -280,7 +281,8 @@
     "home": "https://mktnews.net",
     "color": "indigo",
     "interval": 120000,
-    "title": "快讯"
+    "title": "快讯",
+    "titleEn": "Flash"
   },
   "wallstreetcn": {
     "redirect": "wallstreetcn-quick",

@@ -1,4 +1,10 @@
 import type { Locale } from "./metadata"
+import type { Source } from "./types"
+
+export function getSourceTitle(source: Pick<Source, "title" | "titleEn">, locale: Locale) {
+  if (!source.title) return undefined
+  return locale === "en" && source.titleEn ? source.titleEn : source.title
+}
 
 export function relativeTime(timestamp: string | number, locale: Locale = "en") {
   if (!timestamp) return undefined

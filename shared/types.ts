@@ -65,6 +65,7 @@ export interface Source {
    * Subtitle 小标题
    */
   title?: string
+  titleEn?: string
   desc?: string
   /**
    * Default normal timeline

@@ -1,4 +1,5 @@
 import type { NewsItem, SourceID, SourceResponse } from "@shared/types"
+import { getSourceTitle } from "@shared/utils"
 import { useQuery } from "@tanstack/react-query"
 import { AnimatePresence, motion, useInView } from "framer-motion"
 import { useWindowSize } from "react-use"
@@ -102,6 +103,8 @@ function NewsCard({ id, setHandleRef }: NewsCardProps) {
     retry: false,
   })
 
+  const { locale } = useLocale()
+  const sourceTitle = getSourceTitle(sources[id], locale)
   const { isFocused, toggleFocus } = useFocusWith(id)
 
   return (
@@ -125,7 +128,7 @@ function NewsCard({ id, setHandleRef }: NewsCardProps) {
               >
                 {sources[id].name}
               </span>
-              {sources[id]?.title && <span className={$("text-sm", `color-${sources[id].color} bg-base op-80 bg-op-50! px-1 rounded`)}>{sources[id].title}</span>}
+              {sourceTitle && <span className={$("text-sm", `color-${sources[id].color} bg-base op-80 bg-op-50! px-1 rounded`)}>{sourceTitle}</span>}
             </span>
             <span className="text-xs op-70"><UpdatedTime isError={isError} updatedTime={data?.updatedTime} /></span>
           </span>

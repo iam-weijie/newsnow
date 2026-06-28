@@ -208,6 +208,7 @@ export const originSources = {
     sub: {
       flash: {
         title: "快讯",
+        titleEn: "Flash",
       },
     },
   },
