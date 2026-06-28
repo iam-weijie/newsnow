@@ -1,43 +1,60 @@
 import * as cheerio from "cheerio"
 import type { NewsItem } from "@shared/types"
 
+function titleFromUrl(url: string): string {
+  const slug = url.split("/news/")[1]
+  if (!slug)
+    return url
+  const title = slug.replace(/-/g, " ")
+  return title.charAt(0).toUpperCase() + title.slice(1)
+}
+
 const hottestAllTime = defineSource(async () => {
   const baseURL = "https://alphasignal.ai"
-  const sitemapURL = `${baseURL}/sitemap.xml`
+  const titleByUrl = new Map<string, string>()
+  const dateByUrl = new Map<string, number>()
 
   try {
-    const sitemapXml: any = await myFetch(sitemapURL)
-    const $ = cheerio.load(sitemapXml, { xmlMode: true })
-    const news: NewsItem[] = []
-
-    // Extract all news URLs from sitemap
-    $("url").each((_, el) => {
-      const $el = $(el)
+    const newsSitemap: any = await myFetch(`${baseURL}/news-sitemap.xml`)
+    const $news = cheerio.load(newsSitemap, { xmlMode: true })
+    $news("url").each((_, el) => {
+      const $el = $news(el)
       const loc = $el.find("loc").text().trim()
-
-      // Only include /news/ articles
-      if (loc && loc.includes("/news/")) {
-        // Extract title from URL slug (format: /news/title-with-hyphens-123hash)
-        const urlParts = loc.split("/news/")[1]
-        if (urlParts) {
-          // Remove hash at end and convert hyphens to spaces for title
-          const titleSlug = urlParts.replace(/-[a-z0-9]+$/, "").replace(/-/g, " ")
-          const title = titleSlug.charAt(0).toUpperCase() + titleSlug.slice(1)
-
-          news.push({
-            url: loc,
-            title,
-            id: loc,
-          })
-        }
-      }
+      const title = $el.find("news\\:title").text().trim()
+      const pubDate = $el.find("news\\:publication_date").text().trim()
+      if (loc && title)
+        titleByUrl.set(loc, title)
+      if (loc && pubDate)
+        dateByUrl.set(loc, new Date(pubDate).getTime())
     })
-
-    // Return first 30 articles
-    return news.slice(0, 30)
   } catch {
-    return []
+    // Google News sitemap is optional; fall back to slug titles from the main news sitemap.
   }
+
+  const newsXml: any = await myFetch(`${baseURL}/sitemaps/news.xml`)
+  const $ = cheerio.load(newsXml, { xmlMode: true })
+  const news: NewsItem[] = []
+
+  $("url").each((_, el) => {
+    const $el = $(el)
+    const loc = $el.find("loc").text().trim()
+    if (!loc || !loc.includes("/news/"))
+      return
+
+    const lastmod = $el.find("lastmod").text().trim()
+    const pubDate = dateByUrl.get(loc) ?? (lastmod ? new Date(lastmod).getTime() : undefined)
+
+    news.push({
+      url: loc,
+      title: titleByUrl.get(loc) ?? titleFromUrl(loc),
+      id: loc,
+      pubDate,
+    })
+  })
+
+  return news
+    .sort((a, b) => (Number(b.pubDate) || 0) - (Number(a.pubDate) || 0))
+    .slice(0, 30)
 })
 
 export default defineSource({
