@@ -271,6 +271,7 @@ export const originSources = {
   },
   "aihot": {
     name: "AIHOT",
+    ...zhOnly,
     type: "realtime",
     column: "tech",
     color: "blue",

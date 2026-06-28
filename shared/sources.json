@@ -398,7 +398,10 @@
     "column": "tech",
     "home": "https://aihot.virxact.com/all",
     "color": "blue",
-    "interval": 300000
+    "interval": 300000,
+    "displayIn": [
+      "zh-CN"
+    ]
   },
   "tieba": {
     "title": "热议",
