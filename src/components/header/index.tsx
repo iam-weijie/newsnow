@@ -3,7 +3,7 @@ import { useIsFetching } from "@tanstack/react-query"
 import type { SourceID } from "@shared/types"
 import { NavBar } from "../navbar"
 import { Menu } from "./menu"
-import { currentSourcesAtom, goToTopAtom } from "~/atoms"
+import { goToTopAtom, visibleSourcesAtom } from "~/atoms"
 
 function GoTop() {
   const { ok, fn: goToTop } = useAtomValue(goToTopAtom)
@@ -24,7 +24,7 @@ function Github() {
 }
 
 function Refresh() {
-  const currentSources = useAtomValue(currentSourcesAtom)
+  const currentSources = useAtomValue(visibleSourcesAtom)
   const { refresh } = useRefetch()
   const refreshAll = useCallback(() => refresh(...currentSources), [refresh, currentSources])
 

@@ -1,7 +1,10 @@
 import process from "node:process"
 import { Interval } from "./consts"
+import type { Locale } from "./metadata"
 import { typeSafeObjectFromEntries } from "./type.util"
 import type { OriginSource, Source, SourceID } from "./types"
+
+const zhOnly = { displayIn: ["zh-CN"] as Locale[] }
 
 const Time = {
   Test: 1,
@@ -15,6 +18,7 @@ const Time = {
 export const originSources = {
   "v2ex": {
     name: "V2EX",
+    ...zhOnly,
     color: "slate",
     home: "https://v2ex.com/",
     sub: {
@@ -160,6 +164,7 @@ export const originSources = {
   },
   "zhihu": {
     name: "知乎",
+    ...zhOnly,
     type: "hottest",
     column: "china",
     color: "blue",
@@ -167,6 +172,7 @@ export const originSources = {
   },
   "weibo": {
     name: "微博",
+    ...zhOnly,
     title: "实时热搜",
     type: "hottest",
     column: "china",
@@ -176,6 +182,7 @@ export const originSources = {
   },
   "zaobao": {
     name: "联合早报",
+    ...zhOnly,
     interval: Time.Common,
     type: "realtime",
     column: "world",
@@ -185,6 +192,7 @@ export const originSources = {
   },
   "coolapk": {
     name: "酷安",
+    ...zhOnly,
     type: "hottest",
     column: "tech",
     color: "green",
@@ -205,6 +213,7 @@ export const originSources = {
   },
   "wallstreetcn": {
     name: "华尔街见闻",
+    ...zhOnly,
     color: "blue",
     column: "finance",
     home: "https://wallstreetcn.com/",
@@ -227,6 +236,7 @@ export const originSources = {
   },
   "36kr": {
     name: "36氪",
+    ...zhOnly,
     type: "realtime",
     color: "blue",
     home: "https://36kr.com",
@@ -243,6 +253,7 @@ export const originSources = {
   },
   "douyin": {
     name: "抖音",
+    ...zhOnly,
     type: "hottest",
     column: "china",
     color: "gray",
@@ -250,6 +261,7 @@ export const originSources = {
   },
   "hupu": {
     name: "虎扑",
+    ...zhOnly,
     home: "https://hupu.com",
     column: "china",
     title: "主干道热帖",
@@ -266,6 +278,7 @@ export const originSources = {
   },
   "tieba": {
     name: "百度贴吧",
+    ...zhOnly,
     title: "热议",
     column: "china",
     type: "hottest",
@@ -274,6 +287,7 @@ export const originSources = {
   },
   "toutiao": {
     name: "今日头条",
+    ...zhOnly,
     type: "hottest",
     column: "china",
     color: "red",
@@ -281,6 +295,7 @@ export const originSources = {
   },
   "ithome": {
     name: "IT之家",
+    ...zhOnly,
     color: "red",
     column: "tech",
     type: "realtime",
@@ -288,6 +303,7 @@ export const originSources = {
   },
   "thepaper": {
     name: "澎湃新闻",
+    ...zhOnly,
     interval: Time.Common,
     type: "hottest",
     column: "china",
@@ -297,12 +313,14 @@ export const originSources = {
   },
   "sputniknewscn": {
     name: "卫星通讯社",
+    ...zhOnly,
     color: "orange",
     column: "world",
     home: "https://sputniknews.cn",
   },
   "cankaoxiaoxi": {
     name: "参考消息",
+    ...zhOnly,
     color: "red",
     column: "world",
     interval: Time.Common,
@@ -310,6 +328,7 @@ export const originSources = {
   },
   "pcbeta": {
     name: "远景论坛",
+    ...zhOnly,
     color: "blue",
     column: "tech",
     home: "https://bbs.pcbeta.com",
@@ -329,6 +348,7 @@ export const originSources = {
   },
   "cls": {
     name: "财联社",
+    ...zhOnly,
     color: "red",
     column: "finance",
     home: "https://www.cls.cn",
@@ -349,6 +369,7 @@ export const originSources = {
   },
   "xueqiu": {
     name: "雪球",
+    ...zhOnly,
     color: "blue",
     home: "https://xueqiu.com",
     column: "finance",
@@ -362,6 +383,7 @@ export const originSources = {
   },
   "gelonghui": {
     name: "格隆汇",
+    ...zhOnly,
     color: "blue",
     title: "事件",
     column: "finance",
@@ -371,6 +393,7 @@ export const originSources = {
   },
   "fastbull": {
     name: "法布财经",
+    ...zhOnly,
     color: "emerald",
     home: "https://www.fastbull.cn",
     column: "finance",
@@ -388,6 +411,7 @@ export const originSources = {
   },
   "solidot": {
     name: "Solidot",
+    ...zhOnly,
     color: "teal",
     column: "tech",
     home: "https://solidot.org",
@@ -395,6 +419,7 @@ export const originSources = {
   },
   "bilibili": {
     name: "哔哩哔哩",
+    ...zhOnly,
     color: "blue",
     home: "https://www.bilibili.com",
     sub: {
@@ -420,6 +445,7 @@ export const originSources = {
   },
   "kuaishou": {
     name: "快手",
+    ...zhOnly,
     type: "hottest",
     column: "china",
     color: "orange",
@@ -429,6 +455,7 @@ export const originSources = {
   },
   "kaopu": {
     name: "靠谱新闻",
+    ...zhOnly,
     column: "world",
     color: "gray",
     interval: Time.Common,
@@ -437,6 +464,7 @@ export const originSources = {
   },
   "jin10": {
     name: "金十数据",
+    ...zhOnly,
     column: "finance",
     color: "blue",
     type: "realtime",
@@ -444,6 +472,7 @@ export const originSources = {
   },
   "baidu": {
     name: "百度热搜",
+    ...zhOnly,
     column: "china",
     color: "blue",
     type: "hottest",
@@ -451,6 +480,7 @@ export const originSources = {
   },
   "linuxdo": {
     name: "LINUX DO",
+    ...zhOnly,
     column: "tech",
     color: "slate",
     home: "https://linux.do/",
@@ -470,6 +500,7 @@ export const originSources = {
   },
   "ghxi": {
     name: "果核剥壳",
+    ...zhOnly,
     column: "china",
     color: "yellow",
     home: "https://www.ghxi.com/",
@@ -477,6 +508,7 @@ export const originSources = {
   },
   "smzdm": {
     name: "什么值得买",
+    ...zhOnly,
     column: "china",
     color: "red",
     type: "hottest",
@@ -485,6 +517,7 @@ export const originSources = {
   },
   "nowcoder": {
     name: "牛客",
+    ...zhOnly,
     column: "china",
     color: "blue",
     type: "hottest",
@@ -492,6 +525,7 @@ export const originSources = {
   },
   "sspai": {
     name: "少数派",
+    ...zhOnly,
     column: "tech",
     color: "red",
     type: "hottest",
@@ -499,6 +533,7 @@ export const originSources = {
   },
   "juejin": {
     name: "稀土掘金",
+    ...zhOnly,
     column: "tech",
     color: "blue",
     type: "hottest",
@@ -506,6 +541,7 @@ export const originSources = {
   },
   "ifeng": {
     name: "凤凰网",
+    ...zhOnly,
     column: "china",
     color: "red",
     type: "hottest",
@@ -514,6 +550,7 @@ export const originSources = {
   },
   "chongbuluo": {
     name: "虫部落",
+    ...zhOnly,
     column: "china",
     color: "green",
     home: "https://www.chongbuluo.com",
@@ -533,6 +570,7 @@ export const originSources = {
   },
   "douban": {
     name: "豆瓣",
+    ...zhOnly,
     column: "china",
     title: "热门电影",
     color: "green",
@@ -541,6 +579,7 @@ export const originSources = {
   },
   "tencent": {
     name: "腾讯新闻",
+    ...zhOnly,
     column: "china",
     color: "blue",
     home: "https://news.qq.com",
@@ -555,6 +594,7 @@ export const originSources = {
   },
   "freebuf": {
     name: "Freebuf",
+    ...zhOnly,
     column: "china",
     title: "网络安全",
     color: "green",
@@ -564,6 +604,7 @@ export const originSources = {
 
   "qqvideo": {
     name: "腾讯视频",
+    ...zhOnly,
     column: "china",
     color: "blue",
     home: "https://v.qq.com/",
@@ -579,6 +620,7 @@ export const originSources = {
   },
   "iqiyi": {
     name: "爱奇艺",
+    ...zhOnly,
     column: "china",
     color: "green",
     home: "https://www.iqiyi.com",
@@ -606,6 +648,7 @@ export function genSources() {
       home: source.home,
       color: source.color ?? "primary",
       interval: source.interval ?? Time.Default,
+      displayIn: source.displayIn,
     }
     if (source.sub && Object.keys(source.sub).length) {
       Object.entries(source.sub).forEach(([subId, subSource], i) => {

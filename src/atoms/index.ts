@@ -1,5 +1,7 @@
+import { filterSourcesByLocale } from "@shared/source-locale"
 import type { FixedColumnID, SourceID } from "@shared/types"
 import type { Update } from "./types"
+import { localeAtom } from "~/hooks/useLocale"
 
 export const focusSourcesAtom = atom((get) => {
   return get(primitiveMetadataAtom).data.focus
@@ -30,6 +32,14 @@ export const currentSourcesAtom = atom((get) => {
       [get(currentColumnIDAtom)]: _,
     },
   })
+})
+
+export const visibleSourcesAtom = atom((get) => {
+  return filterSourcesByLocale(
+    get(currentSourcesAtom),
+    get(localeAtom),
+    get(currentColumnIDAtom),
+  )
 })
 
 export const goToTopAtom = atom({

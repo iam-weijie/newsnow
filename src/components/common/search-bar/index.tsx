@@ -1,6 +1,7 @@
 import { Command } from "cmdk"
 import { useMount } from "react-use"
 import type { SourceID } from "@shared/types"
+import { isSourceVisibleInLocale } from "@shared/source-locale"
 import { useMemo, useRef, useState } from "react"
 import pinyin from "@shared/pinyin.json"
 import { OverlayScrollbar } from "../overlay-scrollbar"
@@ -45,19 +46,25 @@ export function SearchBar() {
   const sourceItems = useMemo(
     () =>
       groupByColumn(typeSafeObjectEntries(sources)
-        .filter(([_, source]) => !source.redirect)
-        .map(([k, source]) => ({
-          id: k,
+        .filter(([id, source]) => !source.redirect && isSourceVisibleInLocale(id, locale))
+        .map(([id, source]): SourceItemProps => ({
+          id,
           title: source.title,
           column: source.column ? getColumnName(source.column, locale) : uncategorizedLabel,
           name: source.name,
-          pinyin: pinyin?.[k as keyof typeof pinyin] ?? "",
+          pinyin: pinyin?.[id as keyof typeof pinyin] ?? "",
         })), techLabel, uncategorizedLabel)
     , [locale, techLabel, uncategorizedLabel],
   )
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   const [value, setValue] = useState<SourceID>("github-trending-today")
+
+  useEffect(() => {
+    if (!isSourceVisibleInLocale(value, locale)) {
+      setValue("github-trending-today")
+    }
+  }, [locale, value])
 
   useMount(() => {
     inputRef?.current?.focus()

@@ -9,17 +9,24 @@ import { useAutoAnimate } from "@formkit/auto-animate/react"
 import { motion } from "framer-motion"
 import { useWindowSize } from "react-use"
 import { isMobile } from "react-device-detect"
+import { mergeVisibleReorder } from "@shared/source-locale"
 import { DndContext } from "../common/dnd"
 import { useSortable } from "../common/dnd/useSortable"
 import { OverlayScrollbar } from "../common/overlay-scrollbar"
 import type { ItemsProps } from "./card"
 import { CardWrapper } from "./card"
-import { currentSourcesAtom } from "~/atoms"
+import { currentSourcesAtom, visibleSourcesAtom } from "~/atoms"
 
 const AnimationDuration = 200
 const WIDTH = 350
 export function Dnd() {
-  const [items, setItems] = useAtom(currentSourcesAtom)
+  const allItems = useAtomValue(currentSourcesAtom)
+  const items = useAtomValue(visibleSourcesAtom)
+  const [, setAllItems] = useAtom(currentSourcesAtom)
+  const setItems = useCallback((update: SourceID[] | ((prev: SourceID[]) => SourceID[])) => {
+    const nextVisible = update instanceof Function ? update(items) : update
+    setAllItems(mergeVisibleReorder(allItems, nextVisible))
+  }, [allItems, items, setAllItems])
   const [parent] = useAutoAnimate({ duration: AnimationDuration })
   const t = useT()
   useEntireQuery(items)
