@@ -625,6 +625,17 @@
       "zh-CN"
     ]
   },
+  "weekly": {
+    "name": "科技爱好者周刊",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://github.com/ruanyf/weekly",
+    "color": "blue",
+    "interval": 3600000,
+    "displayIn": [
+      "zh-CN"
+    ]
+  },
   "bilibili": {
     "redirect": "bilibili-hot-search",
     "name": "哔哩哔哩",

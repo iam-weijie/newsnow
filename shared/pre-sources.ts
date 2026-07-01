@@ -419,6 +419,15 @@ export const originSources = {
     home: "https://solidot.org",
     interval: Time.Slow,
   },
+  "weekly": {
+    name: "科技爱好者周刊",
+    ...zhOnly,
+    color: "blue",
+    column: "tech",
+    type: "realtime",
+    home: "https://github.com/ruanyf/weekly",
+    interval: Time.Slow,
+  },
   "bilibili": {
     name: "哔哩哔哩",
     ...zhOnly,
